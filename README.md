@@ -1,2 +1,8 @@
-# ng2-express-starter
-Boilerplate for  Angular 2 with Node JS Express. Uses Typescript for serverside and clientside 
+# TabCat
+## Simple web app to post articles 
+
+### Built on Node JS, Angular 2, Express
+
+
+
+
