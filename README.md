@@ -1,8 +1,4 @@
-# TabCat
-## Simple web app to post articles 
-
-### Built on Node JS, Angular 2, Express
-
+# Angular 2 - Express Typescript Starter 
 
 
 
