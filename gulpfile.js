@@ -1,42 +1,43 @@
 var gulp = require('gulp');
 var concat = require('gulp-concat');
-
 var ts = require('gulp-typescript');
 var sourcemaps = require('gulp-sourcemaps');
 var merge = require('merge2');
 var gulpTypings = require('gulp-typings');
+var webpack = require('webpack-stream');
 
-
-//Typings install
+// Typings install
 gulp.task('typings', function() {
-	var stream = gulp.src("./typings.json")
+	var stream = gulp.src("typings.json")
 		.pipe(gulpTypings()); //will install all typingsfiles in pipeline. =]
-		
-		
-		`by returning stream gulp can listen to events from the stream and knows
-		when it is finished`
 	return stream; 
 
 })
 
-//Node JS TypeScript Compile
-gulp.task('node-ts', function() {
-	//import tsconfig for server build
-	var tsProject = ts.createProject('server/tsconfig.json');
-	
-	var tsResult = gulp.src('server/src/**/*.ts')
-	.pipe(sourcemaps.init()) 
-	.pipe(ts(tsProject))
-	
-	return merge([
-		tsResult.dts.pipe(gulp.dest('server/build/definitions')),
-		tsResult.js.pipe(gulp.dest('server/build/'))
-	]);
-	
+// Webpack
+gulp.task('ng-bundle', function(){
+	 return gulp.src('src/entry.js')
+    .pipe(webpack())
+    .pipe(gulp.dest('public/dist/js'));
 	
 });
 
 
+// Client JS TypeScript Compile
+gulp.task('ng-ts', function() {
+	//import tsconfig for server build
+	var tsProject = ts.createProject('client/tsconfig.json');
+	
+	var tsResult = gulp.src('client/src/**/*.ts')
+	.pipe(sourcemaps.init()) 
+	.pipe(ts(tsProject))
+	
+	return merge([
+		tsResult.dts.pipe(gulp.dest('client/build/definitions')),
+		tsResult.js.pipe(gulp.dest('client/build/'))
+	]);
+	
+});
 
-gulp.task('default', ['node-ts']);
+gulp.task('default', ['ng-bundle']);
 

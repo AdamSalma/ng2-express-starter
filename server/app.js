@@ -8,6 +8,10 @@ var bodyParser = require('body-parser');
 
 
 var app = express();
+var router = express.Router(); 
+
+
+
 
 
 // uncomment after placing your favicon in /public
@@ -17,6 +21,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+
+app.use('/', function(req, res, next){
+  res.send('hello');
+});
 
 
 

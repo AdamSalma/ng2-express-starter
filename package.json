@@ -27,13 +27,15 @@
     "http": "0.0.0",
     "jsonwebtoken": "^7.0.0",
     "morgan": "^1.7.0",
-    "serve-favicon": "^2.3.0"
+    "serve-favicon": "^2.3.0",
+    "webpack-stream": "^3.2.0"
   },
   "devDependencies": {
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.0",
     "gulp-sourcemaps": "^1.6.0",
     "gulp-typescript": "^2.13.4",
+    "gulp-typings": "^2.0.0",
     "merge2": "^1.0.2",
     "nodemon": "^1.9.2",
     "typings": "^1.0.4"
