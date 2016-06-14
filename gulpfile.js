@@ -6,7 +6,7 @@ var merge = require('merge2');
 var gulpTypings = require('gulp-typings');
 var webpack = require('webpack-stream');
 
-// Typings install
+//Typings install
 gulp.task('typings', function() {
 	var stream = gulp.src("typings.json")
 		.pipe(gulpTypings()); //will install all typingsfiles in pipeline. =]
@@ -16,14 +16,14 @@ gulp.task('typings', function() {
 
 // Webpack
 gulp.task('ng-bundle', function(){
-	 return gulp.src('src/entry.js')
+	 return gulp.src('client/build/index.js')
     .pipe(webpack())
     .pipe(gulp.dest('public/dist/js'));
 	
 });
 
 
-// Client JS TypeScript Compile
+//Client JS TypeScript Compile
 gulp.task('ng-ts', function() {
 	//import tsconfig for server build
 	var tsProject = ts.createProject('client/tsconfig.json');
